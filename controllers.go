@@ -5,8 +5,8 @@ import (
 	"net/http"
 )
 
-type IndexController struct{}
+type RepoUpdateController struct{}
 
-func (c IndexController) Respond(w http.ResponseWriter, r *http.Request, data map[string]string) {
+func (c RepoUpdateController) Respond(w http.ResponseWriter, r *http.Request, data map[string]string) {
 	fmt.Fprint(w, "hey")
 }
