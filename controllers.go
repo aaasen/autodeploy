@@ -15,7 +15,7 @@ func (c RepoUpdateController) Respond(w http.ResponseWriter, r *http.Request, da
 	err := json.Unmarshal([]byte(rawPushInfo), &pushInfo)
 
 	if err != nil {
-		log.Println(err)
+		log.Panic(err)
 		http.Error(w, err.Error(), http.StatusBadRequest)
 	}
 
@@ -26,6 +26,9 @@ func (c RepoUpdateController) Respond(w http.ResponseWriter, r *http.Request, da
 	deployErr := Deploy(userName.(string), repoName.(string))
 
 	if deployErr != nil {
+		log.Panic(deployErr)
 		http.Error(w, deployErr.Error(), http.StatusBadRequest)
 	}
+
+	log.Printf("completed build of %s/%s\n", userName, repoName)
 }

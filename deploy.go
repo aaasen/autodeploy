@@ -1,7 +1,6 @@
 package main
 
 import (
-	"fmt"
 	"strings"
 )
 
@@ -15,16 +14,18 @@ func Deploy(userName, repoName string) error {
 	 * start process
 	 */
 
-	repoPath := strings.Join([]string{DEPLOY_DIR, userName, repoName}, "/")
+	repoPath := strings.Join([]string{deployConfig.Dir, userName, repoName}, "/")
 	repo, err := NewRepo(repoPath)
 
 	if err != nil {
 		return err
 	}
 
-	repo.Pull("origin", "master")
+	pullErr := repo.Pull("origin", "master")
 
-	fmt.Println(repo)
+	if pullErr != nil {
+		return pullErr
+	}
 
 	return nil
 }

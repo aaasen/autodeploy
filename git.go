@@ -6,7 +6,7 @@ package main
 
 import (
 	"errors"
-	"fmt"
+	"log"
 	"os"
 	"os/exec"
 )
@@ -42,7 +42,7 @@ func (repo *Repo) Pull(remote, branch string) error {
 		return err
 	}
 
-	fmt.Println(string(out))
+	log.Print(string(out))
 
 	return nil
 }
