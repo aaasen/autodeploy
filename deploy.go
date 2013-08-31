@@ -1,8 +1,11 @@
 package main
 
-import ()
+import (
+	"fmt"
+	"strings"
+)
 
-func Deploy(repoName string) {
+func Deploy(userName, repoName string) {
 	/*
 	 * check name of repo
 	 * make a new Repo there
@@ -11,4 +14,9 @@ func Deploy(repoName string) {
 	 * kill process
 	 * start process
 	 */
+
+	repoPath := strings.Join([]string{DEPLOY_DIR, userName, repoName}, "/")
+	repo := NewRepo(repoPath)
+
+	fmt.Println(repo)
 }

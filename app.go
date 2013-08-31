@@ -4,7 +4,7 @@ import (
 	"github.com/aaasen/dingo"
 )
 
-const DEPLOY_DIR = "/home/aasen/dev/go/bin/"
+const DEPLOY_DIR = "/home/aasen/dev/go/bin"
 
 func main() {
 	server := dingo.New(config)

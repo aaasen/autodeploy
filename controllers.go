@@ -2,7 +2,7 @@ package main
 
 import (
 	"encoding/json"
-	"fmt"
+	"log"
 	"net/http"
 )
 
@@ -15,6 +15,7 @@ func (c RepoUpdateController) Respond(w http.ResponseWriter, r *http.Request, da
 	err := json.Unmarshal([]byte(rawPushInfo), &pushInfo)
 
 	if err != nil {
+		log.Println(err)
 		http.Error(w, err.Error(), http.StatusBadRequest)
 	}
 
@@ -22,6 +23,5 @@ func (c RepoUpdateController) Respond(w http.ResponseWriter, r *http.Request, da
 	userName := repoInfo["owner"].(map[string]interface{})["name"]
 	repoName := repoInfo["name"]
 
-	fmt.Println(userName)
-	fmt.Println(repoName)
+	Deploy(userName.(string), repoName.(string))
 }
