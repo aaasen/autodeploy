@@ -5,7 +5,7 @@ import (
 	"strings"
 )
 
-func Deploy(userName, repoName string) {
+func Deploy(userName, repoName string) error {
 	/*
 	 * check name of repo
 	 * make a new Repo there
@@ -16,7 +16,15 @@ func Deploy(userName, repoName string) {
 	 */
 
 	repoPath := strings.Join([]string{DEPLOY_DIR, userName, repoName}, "/")
-	repo := NewRepo(repoPath)
+	repo, err := NewRepo(repoPath)
+
+	if err != nil {
+		return err
+	}
+
+	repo.Pull("origin", "master")
 
 	fmt.Println(repo)
+
+	return nil
 }

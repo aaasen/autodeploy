@@ -23,5 +23,9 @@ func (c RepoUpdateController) Respond(w http.ResponseWriter, r *http.Request, da
 	userName := repoInfo["owner"].(map[string]interface{})["name"]
 	repoName := repoInfo["name"]
 
-	Deploy(userName.(string), repoName.(string))
+	deployErr := Deploy(userName.(string), repoName.(string))
+
+	if deployErr != nil {
+		http.Error(w, deployErr.Error(), http.StatusBadRequest)
+	}
 }
