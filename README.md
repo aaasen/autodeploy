@@ -1,2 +1,4 @@
 
-# Automatically deploy Go applications through GitHub
+# AutoDeploy
+
+Automatically deploy Go applications by pushing to Github
