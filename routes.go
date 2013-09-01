@@ -1,4 +1,4 @@
-package main
+package autodeploy
 
 import (
 	"github.com/aaasen/dingo"

@@ -1,4 +1,4 @@
-package main
+package autodeploy
 
 import (
 	"strings"

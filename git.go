@@ -1,4 +1,4 @@
-package main
+package autodeploy
 
 /*
  * A very limited wrapper for Git
